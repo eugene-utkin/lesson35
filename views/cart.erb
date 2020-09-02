@@ -1,0 +1,74 @@
+
+
+<h2>Items in your Cart:</h2>
+
+<br />
+<br />
+
+<% if @hawaiian > 0 %>
+	Hawaiian x <%= @hawaiian %> = <%= @hawaiian * @products.find(1).price %> rub.
+	<br />
+<% end %>
+<% if @pepperoni > 0 %>
+	Pepperoni x <%= @pepperoni %> = <%= @pepperoni * @products.find(2).price %> rub.
+	<br />
+<% end %>
+<% if @vegetarian > 0 %>
+	Vegetarian x <%= @vegetarian %> = <%= @vegetarian * @products.find(3).price %> rub.
+	<br />
+<% end %>
+
+<br />
+<br />
+
+<form action="/order" method="POST">
+	<div class="form-group">
+	<input id="orders_input2" name="finalorders" type="hidden" value="">
+	</div>
+  <div class="form-group">
+    <label>Your Name</label>
+    <input name="client[name]" type="text" class="form-control" placeholder="Name" value="<%= @c.name %>">
+  </div>
+
+  <div class="form-group">
+    <label>Phone Number</label>
+    <input name="client[phone]" type="text" class="form-control" placeholder="Phone" value="<%= @c.phone %>">
+  </div>
+
+  <div class="form-group">
+    <label>Adress</label>
+    <input name="client[adress]" type="text" class="form-control" placeholder="Adress" value="<%= @c.adress %>">
+  </div>
+
+  <div class="form-group">
+    <label>Order</label>
+    <input name="client[order]" type="text" class="form-control" placeholder="Order" value="<% if @hawaiian > 0 %>
+	Hawaiian x <%= @hawaiian %> = <%= @hawaiian * @products.find(1).price %> rub.
+	
+<% end %>
+<% if @pepperoni > 0 %>
+	Pepperoni x <%= @pepperoni %> = <%= @pepperoni * @products.find(2).price %> rub.
+	
+<% end %>
+<% if @vegetarian > 0 %>
+	Vegetarian x <%= @vegetarian %> = <%= @vegetarian * @products.find(3).price %> rub.
+	
+<% end %>" readonly>
+
+  </div>
+
+  
+
+
+<br />
+
+  <button type="submit" class="btn btn-primary">Order Now!</button>
+</form>
+
+<script type="text/javascript">
+$(function() {
+    update_orders_input();
+    update_orders_input2();
+    update_orders_button()
+});
+</script>
