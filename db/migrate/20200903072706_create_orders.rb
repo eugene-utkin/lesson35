@@ -1,10 +1,10 @@
-class CreateClients < ActiveRecord::Migration[6.0]
+class CreateOrders < ActiveRecord::Migration[6.0]
   def change
-  	create_table :clients do |t|
+  	create_table :orders do |t|
+        t.text :orders_input
         t.text :name
         t.text :phone
         t.text :adress
-        t.text :order
 
         t.timestamps
 	end
