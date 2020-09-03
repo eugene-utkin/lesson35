@@ -24,6 +24,11 @@ get '/about' do
   erb :about
 end
 
+post '/place_order' do
+  @order = Order.create params[:order]
+  erb :order_placed
+end
+
 
 post '/cart' do
   @orders = params[:orders]
